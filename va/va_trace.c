@@ -1624,7 +1624,8 @@ static void va_TraceCodedBufferIVFHeader(struct trace_context *trace_ctx, void *
 void va_TraceMapBuffer (
     VADisplay dpy,
     VABufferID buf_id,    /* in */
-    void **pbuf           /* out */
+    void **pbuf,           /* out */
+    uint32_t flags       /* in */
 )
 {
     VABufferType type;
@@ -1645,6 +1646,7 @@ void va_TraceMapBuffer (
     TRACE_FUNCNAME(idx);
     va_TraceMsg(trace_ctx, "\tbuf_id=0x%x\n", buf_id);
     va_TraceMsg(trace_ctx, "\tbuf_type=%s\n", vaBufferTypeStr(type));
+    va_TraceMsg(trace_ctx, "\tflags = 0x%x\n", flags);
     if ((pbuf == NULL) || (*pbuf == NULL))
         return;
 

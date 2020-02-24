@@ -485,8 +485,14 @@ struct VADriverVTable
             void               *descriptor      /* out */
         );
 
+	VAStatus (*vaMapBuffer2) (
+		VADriverContextP ctx,
+		VABufferID buf_id,	/* in */
+		void **pbuf,            /* out */
+                uint32_t flags          /* in */
+	);
         /** \brief Reserved bytes for future use, must be zero */
-        unsigned long reserved[57];
+        unsigned long reserved[56];
 };
 
 struct VADriverContext
