@@ -5765,8 +5765,6 @@ void va_TraceEndPicture(
 {
     DPY2TRACECTX(dpy, context, VA_INVALID_ID);
 
-    TRACE_FUNCNAME(idx);
-
     va_TraceMsg(trace_ctx, "\tcontext = 0x%08x\n", context);
     va_TraceMsg(trace_ctx, "\trender_targets = 0x%08x\n", trace_ctx->trace_rendertarget);
     va_TraceMsg(trace_ctx, NULL);

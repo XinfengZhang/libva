@@ -1598,7 +1598,7 @@ VAStatus vaEndPicture(
     CHECK_DISPLAY(dpy);
     ctx = CTX(dpy);
 
-    VA_TRACE_ALL(va_TraceEndPicture, dpy, context, 0);
+    VA_TRACE_ENT(dpy);
     va_status = ctx->vtable->vaEndPicture(ctx, context);
     VA_TRACE_RET(dpy, va_status);
     /* dump surface content */
@@ -1617,6 +1617,8 @@ VAStatus vaSyncSurface(
 
     CHECK_DISPLAY(dpy);
     ctx = CTX(dpy);
+  
+    VA_TRACE_ENT(dpy);
 
     va_status = ctx->vtable->vaSyncSurface(ctx, render_target);
     VA_TRACE_LOG(va_TraceSyncSurface, dpy, render_target);
