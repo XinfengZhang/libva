@@ -4356,6 +4356,25 @@ VAStatus vaDeriveImage (
 );
 
 /**
+ * Device Infomation *
+ */
+typedef enum {
+    VADeviceAttibModifier = 1,
+    VADeviceMemoryType    = 2
+}VADeviceAttribType;
+
+typedef struct _VADeviceAttrib {
+    VADeviceAttribType type;
+    uint32_t value; /* OR'd flags (bits) for this attribute */
+} VADeviceAttrib;
+
+VAStatus vaQueryDeviceAttributes(
+     VADisplay dpy,
+     VADeviceAttrib *attrib_list,
+     uint32_t       *num_attribs
+);
+
+/**
  * Subpictures 
  * Subpicture is a special type of image that can be blended 
  * with a surface during vaPutSurface(). Subpicture can be used to render
