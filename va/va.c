@@ -1782,6 +1782,12 @@ VAStatus vaCreateImage (
   ctx = CTX(dpy);
 
   va_status = ctx->vtable->vaCreateImage ( ctx, format, width, height, image);
+
+  if(VA_STATUS_SUCCESS == va_status)
+  {
+     VA_TRACE_LOG(va_TraceImageInfo, dpy, image);
+  }
+
   VA_TRACE_RET(dpy, va_status);
   return va_status;
 }
