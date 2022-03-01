@@ -1091,12 +1091,12 @@ void va_TraceCreateConfig(
 
     TRACE_FUNCNAME(idx);
 
-    va_TraceMsg(trace_ctx, "\tprofile = %d\n", profile);
-    va_TraceMsg(trace_ctx, "\tentrypoint = %d\n", entrypoint);
+    va_TraceMsg(trace_ctx, "\tprofile = %s\n",  vaProfileStr(profile));
+    va_TraceMsg(trace_ctx, "\tentrypoint = %d\n", vaEntrypointStr(entrypoint));
     va_TraceMsg(trace_ctx, "\tnum_attribs = %d\n", num_attribs);
     if (attrib_list) {
         for (i = 0; i < num_attribs; i++) {
-            va_TraceMsg(trace_ctx, "\t\tattrib_list[%d].type = 0x%08x\n", i, attrib_list[i].type);
+            va_TraceMsg(trace_ctx, "\t\tattrib_list[%d].type = %s\n", i, vaConfigAttribTypeStr(attrib_list[i].type));
             va_TraceMsg(trace_ctx, "\t\tattrib_list[%d].value = 0x%08x\n", i, attrib_list[i].value);
         }
     }
@@ -1377,8 +1377,8 @@ void va_TraceCreateContext(
     trace_ctx->trace_context = *context;
     TRACE_FUNCNAME(idx);
     va_TraceMsg(trace_ctx, "\tcontext = 0x%08x va_trace_flag 0x%x\n", *context, va_trace_flag);
-    va_TraceMsg(trace_ctx, "\tprofile = %d entrypoint = %d\n", trace_ctx->trace_profile,
-                trace_ctx->trace_entrypoint);
+    va_TraceMsg(trace_ctx, "\tprofile = %s entrypoint = %s\n", vaProfileStr(trace_ctx->trace_profile),
+                vaEntrypointStr(trace_ctx->trace_entrypoint));
     va_TraceMsg(trace_ctx, "\tconfig = 0x%08x\n", config_id);
     va_TraceMsg(trace_ctx, "\twidth = %d\n", picture_width);
     va_TraceMsg(trace_ctx, "\theight = %d\n", picture_height);
