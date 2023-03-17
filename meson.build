@@ -7,7 +7,7 @@
 # - reset micro version to zero when VA-API major or minor version is changed
 project(
   'libva', 'c',
-  version : '2.17.0',
+  version : '2.17.1',
   meson_version : '>= 0.53.0',
   default_options : [ 'warning_level=1',
                       'buildtype=debugoptimized' ])
@@ -20,7 +20,7 @@ project(
 # - reset minor version to zero when major version is incremented
 va_api_major_version = 1
 va_api_minor_version = 17
-va_api_micro_version = 0
+va_api_micro_version = 1
 
 va_api_version = '@0@.@1@.@2@'.format(va_api_major_version,
 				      va_api_minor_version,
