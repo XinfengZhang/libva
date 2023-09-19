@@ -673,6 +673,7 @@ typedef enum {
      * same as "render_target" set in vaBeginPicture(), but the driver may choose
      * to ignore this parameter.
      */
+    /**@}*/
     VAConfigAttribDecProcessing     = 8,
     /** @name Attributes for encoding */
     /**@{*/
@@ -1036,7 +1037,17 @@ typedef enum {
      * The value returned uses the VAConfigAttribValEncPerBlockControl type.
      */
     VAConfigAttribEncPerBlockControl    = 55,
+    /** \brief setting execution hint for support config. Read/write.
+     *
+     * This attribute is used to check whether backend driver support
+     * different execution mode, the hint should come from different
+     * usage scenario, such as VDI, you may need low latency, may need high
+     * frequency. for a remote player, may need power saving to extend battery
+     * life. the value should refer /c VAConfigAttribValExecHint
+     */
+    VAConfigAttribExecHint              = 56,
     /**@}*/
+
     VAConfigAttribTypeMax
 } VAConfigAttribType;
 
@@ -1432,6 +1443,18 @@ typedef union _VAConfigAttribValEncPerBlockControl {
     } bits;
     uint32_t value;
 } VAConfigAttribValEncPerBlockControl;
+
+/** brief Attribute values for VAConfigAttribExecHint */
+typedef union _VAConfigAttribValExecHint {
+    struct {
+        /** \brief whehter to support power saving mode */
+        uint32_t power_saving             : 1;
+        /** \brief reserved bit for future, must be zero */
+        uint32_t reserved                 : 31;
+    } bits;
+    uint32_t value;
+} VAConfigAttribValExecHint;
+
 
 /** @name Attribute values for VAConfigAttribProtectedContentCipherAlgorithm */
 /** \brief AES cipher */
